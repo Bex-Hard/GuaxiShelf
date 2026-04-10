@@ -7,12 +7,12 @@ const api = axios.create({
 });
 
 export async function searchBooks(params: BookSearchParams): Promise<BooksApiResponse> {
-  const { query, category, orderBy = 'relevance', startIndex = 0, maxResults = 20 } = params;
+  const { query, category, orderBy = 'relevance', printType = 'all', startIndex = 0, maxResults = 20 } = params;
 
   const q = category ? `${query}+subject:${encodeURIComponent(category)}` : query;
 
   const { data } = await api.get<BooksApiResponse>('/volumes', {
-    params: { q, orderBy, startIndex, maxResults },
+    params: { q, orderBy, printType, startIndex, maxResults },
   });
 
   return data;

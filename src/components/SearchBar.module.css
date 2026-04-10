@@ -1,0 +1,64 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 0 14px;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  width: 100%;
+  max-width: 560px;
+}
+
+.wrapper:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--text);
+  width: 18px;
+  height: 18px;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  color: var(--text-h);
+  padding: 12px 0;
+  min-width: 0;
+}
+
+.input::placeholder {
+  color: var(--text);
+  opacity: 0.7;
+}
+
+.clearBtn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  padding: 4px;
+  border-radius: 4px;
+  line-height: 0;
+  transition: color 0.15s;
+}
+
+.clearBtn:hover {
+  color: var(--text-h);
+}
+
+.clearBtn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

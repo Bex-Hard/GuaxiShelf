@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { searchBooks } from '../services/booksApi';
 import { useDebounce } from './useDebounce';
-import type { Volume, OrderBy } from '../types';
+import type { Volume, OrderBy, PrintType } from '../types';
 
 const PAGE_SIZE = 20;
 
@@ -9,6 +9,9 @@ interface UseBooksOptions {
   query: string;
   category?: string;
   orderBy?: OrderBy;
+  printType?: PrintType;
+  /** Used when query is empty — lets the gallery always show something. */
+  defaultQuery?: string;
 }
 
 interface UseBooksReturn {
@@ -22,7 +25,7 @@ interface UseBooksReturn {
   reset: () => void;
 }
 
-export function useBooks({ query, category, orderBy = 'relevance' }: UseBooksOptions): UseBooksReturn {
+export function useBooks({ query, category, orderBy = 'relevance', printType = 'all', defaultQuery }: UseBooksOptions): UseBooksReturn {
   const [books, setBooks] = useState<Volume[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [startIndex, setStartIndex] = useState(0);
@@ -37,14 +40,14 @@ export function useBooks({ query, category, orderBy = 'relevance' }: UseBooksOpt
 
   const fetchPage = useCallback(
     async (index: number, isLoadMore: boolean) => {
-      const trimmed = debouncedQuery.trim();
+      const trimmed = debouncedQuery.trim() || defaultQuery?.trim() || '';
       if (!trimmed) {
         setBooks([]);
         setTotalItems(0);
         return;
       }
 
-      const key = `${trimmed}|${category}|${orderBy}|${index}`;
+      const key = `${trimmed}|${category}|${orderBy}|${printType}|${index}`;
       searchKeyRef.current = key;
 
       isLoadMore ? setLoadingMore(true) : setLoading(true);
@@ -55,6 +58,7 @@ export function useBooks({ query, category, orderBy = 'relevance' }: UseBooksOpt
           query: trimmed,
           category,
           orderBy,
+          printType,
           startIndex: index,
           maxResults: PAGE_SIZE,
         });
