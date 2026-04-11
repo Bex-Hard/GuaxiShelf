@@ -118,7 +118,6 @@ function NavBar() {
             onSuccess={login}
             onError={() => console.error('Login falhou')}
             size="medium"
-            locale="pt-BR"
           />
         )}
       </span>

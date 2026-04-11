@@ -86,7 +86,6 @@ export function LoginModal({ onClose }: LoginModalProps) {
             onError={() => console.error('Login falhou')}
             theme="outline"
             size="large"
-            locale="pt-BR"
           />
         </div>
       </div>
