@@ -39,10 +39,10 @@ function NavBar() {
 
   const linkStyle = ({ isActive }: { isActive: boolean }) =>
     ({
-      color: isActive ? 'var(--accent)' : 'var(--text)',
+      color: isActive ? '#fff' : 'rgba(255,255,255,0.72)',
       textDecoration: 'none',
       fontSize: 14,
-      fontWeight: 500,
+      fontWeight: isActive ? 600 : 500,
       transition: 'color 0.15s',
     }) as React.CSSProperties;
 
@@ -51,7 +51,7 @@ function NavBar() {
       aria-label="Navegação principal"
       style={{
         padding: '12px 20px',
-        borderBottom: '1px solid var(--border)',
+        background: '#280137',
         display: 'flex',
         alignItems: 'center',
         gap: 20,
@@ -94,19 +94,19 @@ function NavBar() {
                 referrerPolicy="no-referrer"
               />
             )}
-            <span style={{ fontSize: 13, color: 'var(--text-h)' }}>{user?.name}</span>
+            <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)' }}>{user?.name}</span>
             <button
               type="button"
               onClick={logout}
               aria-label="Sair da conta"
               style={{
                 background: 'none',
-                border: '1px solid var(--border)',
+                border: '1px solid rgba(255,255,255,0.35)',
                 borderRadius: 6,
                 padding: '4px 12px',
                 fontSize: 13,
                 cursor: 'pointer',
-                color: 'var(--text)',
+                color: 'rgba(255,255,255,0.85)',
                 transition: 'border-color 0.15s, color 0.15s',
               }}
             >

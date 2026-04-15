@@ -4,7 +4,10 @@ export default function About() {
   return (
     <main className={styles.page}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Sobre Nós</h1>
+        <div className={styles.titleRow}>
+          <img src="/rac_icon.png" alt="" aria-hidden="true" className={styles.titleIcon} />
+          <h1 className={styles.title}>Sobre Nós</h1>
+        </div>
         <p className={styles.lead}>
           GuaxiShelf é o sistema de acervo digital da Biblioteca Universitária,
           desenvolvido como projeto Capstone do programa de formação fullstack.
@@ -20,8 +23,8 @@ export default function About() {
         </p>
         <p>
           A plataforma integra o catálogo do Google Books para oferecer dados ricos sobre
-          cada obra — capas em alta resolução, sinopses, informações editoriais e avaliações —
-          ao mesmo tempo em que gerencia empréstimos locais com persistência segura.
+          cada obra, como capa em alta resolução, sinopses, informações editoriais e avaliações,
+          ao mesmo tempo em que gerencia empréstimos locais.
         </p>
       </section>
 

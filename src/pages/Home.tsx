@@ -113,7 +113,10 @@ export default function Home() {
     <main className={styles.page}>
       {/* ── Hero header ── */}
       <header className={styles.header}>
-        <h1 className={styles.title}>GuaxiShelf</h1>
+        <div className={styles.titleRow}>
+          <img src="/rac_icon.png" alt="" aria-hidden="true" className={styles.titleIcon} />
+          <h1 className={styles.title}>GuaxiShelf</h1>
+        </div>
         <p className={styles.subtitle}>Explore o acervo da biblioteca universitária</p>
         <SearchBar value={query} onChange={setQuery} />
         <HomeNav />
