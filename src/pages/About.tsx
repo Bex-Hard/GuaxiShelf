@@ -10,7 +10,7 @@ export default function About() {
         </div>
         <p className={styles.lead}>
           GuaxiShelf é o sistema de acervo digital da Biblioteca Universitária,
-          desenvolvido como projeto Capstone do programa de formação fullstack.
+          desenvolvido como projeto Capstone da disciplina de Web Development.
         </p>
       </header>
 
